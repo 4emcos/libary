@@ -32,16 +32,27 @@
       <b-form-group id="input-group-4" label-for="input-4">
         <b-form-input
           id="input-4"
+          v-model="form.paginas"
+          required
+          placeholder="Páginas"
+          type="number"
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group id="input-group-4" label-for="input-4">
+        <b-form-input
+          id="input-5"
           v-model="form.editora"
           required
           placeholder="Editora"
+          
         ></b-form-input>
       </b-form-group>
 
 
       <b-form-group id="input-group-5" label-for="input-5">
         <b-form-input
-          id="input-5"
+          id="input-6"
           v-model="form.observacoes"
           placeholder="Observações"
         ></b-form-input>
@@ -65,6 +76,7 @@
           titulo: '',
           ano: '',
           autor: '',
+          paginas: '',
           editora: '',
           observacoes: '',
 
@@ -76,13 +88,15 @@
     methods: {
       onSubmit(content) {
         content.preventDefault()
-         this.$emit("emit-content", {titulo: this.form.titulo, 
+        
+        this.$emit("emit-content", {titulo: this.form.titulo, 
                                      ano: this.form.ano,
                                      autor: this.form.autor,
+                                     paginas: this.form.paginas,
                                      editora: this.form.editora,
                                      observacoes: this.form.observacoes,                   
                                      });
-                                     
+        event.target.reset()
       },
       onReset(content) {
         content.preventDefault()
@@ -90,6 +104,7 @@
         this.form.titulo = ''
         this.form.ano = ''
         this.form.autor = ''
+        this.form.paginas = ''
         this.form.editora = ''
         this.form.observacoes = ''
       
@@ -104,6 +119,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+
 h3 {
   margin: 40px 0 0;
 }

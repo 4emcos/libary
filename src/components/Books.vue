@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Livros</h1>
+        <h1>Bem-vindo</h1>
         <hr/>
         <LibaryForm v-on:emit-content="onSubmit" />
         <b-container class="bv-example-row">
@@ -18,6 +18,7 @@
                             <b-card-text>
                                     <span>Autor: <strong>{{ i.autor }}</strong></span> <br/>
                                     <span>Ano: <strong>{{ i.ano }}</strong></span> <br/>
+                                    <span>Páginas: <strong>{{ i.paginas }}</strong></span> <br/>
                                 <span>Editora: <strong>{{ i.editora }}</strong></span> <br/>
                                 <span>Observações: <strong>{{ i.observacoes }}</strong></span>
                             
