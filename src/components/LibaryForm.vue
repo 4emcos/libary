@@ -68,6 +68,10 @@
 </template>
 
 <script>
+
+  import axios from 'axios'
+
+
   export default {
     name: "LibaryForm",
     data() {
@@ -87,8 +91,8 @@
     },
     methods: {
       onSubmit(content) {
-        content.preventDefault()
         
+        content.preventDefault()
         this.$emit("emit-content", {titulo: this.form.titulo, 
                                      ano: this.form.ano,
                                      autor: this.form.autor,
@@ -96,7 +100,22 @@
                                      editora: this.form.editora,
                                      observacoes: this.form.observacoes,                   
                                      });
+        axios.post(`http://localhost:5000/cadastrar/livro`,
+          {  titulo: this.form.titulo, 
+              ano: this.form.ano,
+              autor: this.form.autor,
+              paginas: this.form.paginas,
+              editora: this.form.editora,
+          }
+
+          
+        ).then(res => {
+                return res.data
+          })
+        
         event.target.reset()
+
+
       },
       onReset(content) {
         content.preventDefault()
